@@ -23,16 +23,15 @@ function showQuestion() {
         `;
 
         // Conditional image based on score
-        if (score < 3) {
-            html += `<img src="https://via.placeholder.com/300x200?text=Try+Again!" 
-                      alt="Try Again" 
-                      style="width:100%;max-width:300px;margin-top:20px;">`;
-        } else {
-            html += `<img src="https://via.placeholder.com/300x200?text=Congrats!" 
-                      alt="Congrats" 
-                      style="width:100%;max-width:300px;margin-top:20px;">`;
-        }
-
+      if (score < 3) {
+    html += `<img src="try-again.png" 
+              alt="Try Again" 
+              style="width:100%;max-width:300px;margin-top:20px;">`;
+} else {
+    html += `<img src="congrats.png" 
+              alt="Congrats" 
+              style="width:100%;max-width:300px;margin-top:20px;">`;
+}
         html += `<button onclick="restartQuiz()" style="margin-top:20px;">Play Again</button>`;
 
         document.getElementById('quiz-container').innerHTML = html;
@@ -83,4 +82,5 @@ function restartQuiz() {
 
 // Start the quiz
 fetchQuestions();
+
 
