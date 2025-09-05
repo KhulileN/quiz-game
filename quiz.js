@@ -17,26 +17,44 @@ async function fetchQuestions() {
 
 function showQuestion() {
     if (currentQuestionIndex >= questions.length) {
-        document.getElementById('quiz-container').innerHTML = `
+        let html = `
             <h2>Quiz Finished!</h2>
             <p>Your Score: ${score} / ${questions.length}</p>
-            <button onclick="restartQuiz()">Play Again</button>
         `;
+
+        // Conditional image based on score
+        if (score < 3) {
+            html += `<img src="https://via.placeholder.com/300x200?text=Try+Again!" 
+                      alt="Try Again" 
+                      style="width:100%;max-width:300px;margin-top:20px;">`;
+        } else {
+            html += `<img src="https://via.placeholder.com/300x200?text=Congrats!" 
+                      alt="Congrats" 
+                      style="width:100%;max-width:300px;margin-top:20px;">`;
+        }
+
+        html += `<button onclick="restartQuiz()" style="margin-top:20px;">Play Again</button>`;
+
+        document.getElementById('quiz-container').innerHTML = html;
         document.getElementById('next-btn').style.display = "none";
         return;
     }
 
     const q = questions[currentQuestionIndex];
     const answers = [...q.incorrect_answers, q.correct_answer];
-    answers.sort(() => Math.random() - 0.5); // shuffle answers
+    answers.sort(() => Math.random() - 0.5);
 
-    let html = `<h2>${q.question}</h2>`;
+    let html = `
+        <h2>Question ${currentQuestionIndex + 1} of ${questions.length}</h2>
+        <p>${q.question}</p>
+    `;
     answers.forEach(answer => {
         html += `<button onclick="checkAnswer('${answer}', '${q.correct_answer}')">${answer}</button><br>`;
     });
 
     document.getElementById('quiz-container').innerHTML = html;
 }
+
 
 function checkAnswer(selected, correct) {
     if (selected === correct) {
@@ -65,3 +83,4 @@ function restartQuiz() {
 
 // Start the quiz
 fetchQuestions();
+
