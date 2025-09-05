@@ -25,7 +25,7 @@ function showQuestion() {
 
         // Show image based on score
         if (score < 3) {
-            html += `<img src="try-again.jpg" alt="Try Again">`;
+            html += `<img src="pieter.png" alt="Try Again">`;
         } else {
             html += `<img src="congrats.jpg" alt="Congrats">`;
         }
@@ -70,3 +70,4 @@ function restartQuiz() {
 
 // Start the quiz
 fetchQuestions();
+
