@@ -24,11 +24,11 @@ function showQuestion() {
 
         // Conditional image based on score
       if (score < 3) {
-    html += `<img src="try-again.png" 
+    html += `<img src="try-again.jpg" 
               alt="Try Again" 
               style="width:100%;max-width:300px;margin-top:20px;">`;
 } else {
-    html += `<img src="congrats.png" 
+    html += `<img src="congrats.jpg" 
               alt="Congrats" 
               style="width:100%;max-width:300px;margin-top:20px;">`;
 }
@@ -82,5 +82,6 @@ function restartQuiz() {
 
 // Start the quiz
 fetchQuestions();
+
 
 
